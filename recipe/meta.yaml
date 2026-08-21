@@ -1,0 +1,51 @@
+{% set name = "query-cache-common" %}
+{% set version = "1.24.0" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_')}}-{{ version }}.tar.gz
+  sha256: c38d1066a9470eafb466507c5fea3f8a9da960c23570f7cee6adb4e0e437f00b
+  patches:
+    - patches/0001-fix-pyproject-file.patch
+
+build:
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  skip: true  # [py<39]
+
+requirements:
+  host:
+    - pip
+    - python
+    - hatchling
+  run:
+    - python
+    - humanize
+    - query-cache-protobuf
+    - typing_extensions >=4.0.0
+
+test:
+  imports:
+    - query_cache_common
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://pypi.org/project/query-cache-common
+  summary: Common code for Query Cache shared across client and server
+  license: Apache-2.0
+  license_family: Apache
+  license_file: PKG-INFO
+  description: |
+    Common code for Query Cache shared across client and server
+  doc_url: https://pypi.org/project/query-cache-common
+  dev_url: https://pypi.org/project/query-cache-common
+
+extra:
+  recipe-maintainers:
+    - Andrii-Osipov
