@@ -1,0 +1,39 @@
+From c3760215d80020515d6b9008d1effabe84ddf379 Mon Sep 17 00:00:00 2001
+From: Andrii Osipov <aosipov@anaconda.com>
+Date: Fri, 21 Aug 2026 00:59:09 -0700
+Subject: [PATCH] fix pyproject file
+
+---
+ pyproject.toml | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 46bc255..a860f82 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,8 +1,8 @@
+ [project]
+ name = "query-cache-common"
+-dynamic = ["version"]
++version = "1.24.0"
+ description = "Common code for Query Cache shared across client and server"
+-license = {file = "../../LICENSE"}
++license = "Apache-2.0"
+ requires-python = ">=3.9"
+ dependencies = [
+     "typing-extensions>=4.0.0",
+@@ -10,11 +10,6 @@ dependencies = [
+     "humanize",
+ ]
+ 
+-[tool.hatch.version]
+-source = "code"
+-path = "../../tooling/versions.py"
+-expression = "VERSIONS['query-cache-common']"
+-
+ [build-system]
+ requires = ["hatchling"]
+ build-backend = "hatchling.build"
+-- 
+2.39.5 (Apple Git-154)
+
