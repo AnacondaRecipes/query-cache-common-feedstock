@@ -1,5 +1,5 @@
 {% set name = "query-cache-common" %}
-{% set version = "1.24.0" %}
+{% set version = "2.0.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_')}}-{{ version }}.tar.gz
-  sha256: c38d1066a9470eafb466507c5fea3f8a9da960c23570f7cee6adb4e0e437f00b
+  sha256: d2ae2eff4542209d2d285faf6449036e48419a7aa3540dad85f4ec0da6fadaba
   patches:
     - patches/0001-fix-pyproject-file.patch
 
@@ -23,9 +23,9 @@ requirements:
     - hatchling
   run:
     - python
-    - humanize
-    - query-cache-protobuf
     - typing_extensions >=4.0.0
+    - query-cache-protobuf
+    - humanize
 
 test:
   imports:
